@@ -207,16 +207,6 @@
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
-      },
-      "FilterLogic/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v2.2",
-        "compile": {
-          "bin/placeholder/FilterLogic.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/FilterLogic.dll": {}
-        }
       }
     }
   },
@@ -688,16 +678,10 @@
         "netstandard.library.2.0.3.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
-    },
-    "FilterLogic/1.0.0": {
-      "type": "project",
-      "path": "../FilterLogic/FilterLogic.csproj",
-      "msbuildProject": "../FilterLogic/FilterLogic.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
-      "FilterLogic >= 1.0.0",
       "Microsoft.NETCore.App >= 2.2.0"
     ]
   },
@@ -708,11 +692,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\VlAD\\Desktop\\EpamTasks\\Expressions\\ExpressionConsole\\ExpressionConsole\\ExpressionConsole.csproj",
-      "projectName": "ExpressionConsole",
-      "projectPath": "C:\\Users\\VlAD\\Desktop\\EpamTasks\\Expressions\\ExpressionConsole\\ExpressionConsole\\ExpressionConsole.csproj",
+      "projectUniqueName": "C:\\Users\\VlAD\\Desktop\\EpamTasks\\Expressions\\ExpressionConsole\\FilterLogic\\FilterLogic.csproj",
+      "projectName": "FilterLogic",
+      "projectPath": "C:\\Users\\VlAD\\Desktop\\EpamTasks\\Expressions\\ExpressionConsole\\FilterLogic\\FilterLogic.csproj",
       "packagesPath": "C:\\Users\\VlAD\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\VlAD\\Desktop\\EpamTasks\\Expressions\\ExpressionConsole\\ExpressionConsole\\obj\\",
+      "outputPath": "C:\\Users\\VlAD\\Desktop\\EpamTasks\\Expressions\\ExpressionConsole\\FilterLogic\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -730,11 +714,7 @@
       },
       "frameworks": {
         "netcoreapp2.2": {
-          "projectReferences": {
-            "C:\\Users\\VlAD\\Desktop\\EpamTasks\\Expressions\\ExpressionConsole\\FilterLogic\\FilterLogic.csproj": {
-              "projectPath": "C:\\Users\\VlAD\\Desktop\\EpamTasks\\Expressions\\ExpressionConsole\\FilterLogic\\FilterLogic.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {

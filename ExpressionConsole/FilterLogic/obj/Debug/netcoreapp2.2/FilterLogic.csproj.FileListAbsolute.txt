@@ -1,0 +1,9 @@
+C:\Users\VlAD\Desktop\EpamTasks\Expressions\ExpressionConsole\FilterLogic\bin\Debug\netcoreapp2.2\FilterLogic.deps.json
+C:\Users\VlAD\Desktop\EpamTasks\Expressions\ExpressionConsole\FilterLogic\bin\Debug\netcoreapp2.2\FilterLogic.dll
+C:\Users\VlAD\Desktop\EpamTasks\Expressions\ExpressionConsole\FilterLogic\bin\Debug\netcoreapp2.2\FilterLogic.pdb
+C:\Users\VlAD\Desktop\EpamTasks\Expressions\ExpressionConsole\FilterLogic\obj\Debug\netcoreapp2.2\FilterLogic.csprojAssemblyReference.cache
+C:\Users\VlAD\Desktop\EpamTasks\Expressions\ExpressionConsole\FilterLogic\obj\Debug\netcoreapp2.2\FilterLogic.csproj.CoreCompileInputs.cache
+C:\Users\VlAD\Desktop\EpamTasks\Expressions\ExpressionConsole\FilterLogic\obj\Debug\netcoreapp2.2\FilterLogic.AssemblyInfoInputs.cache
+C:\Users\VlAD\Desktop\EpamTasks\Expressions\ExpressionConsole\FilterLogic\obj\Debug\netcoreapp2.2\FilterLogic.AssemblyInfo.cs
+C:\Users\VlAD\Desktop\EpamTasks\Expressions\ExpressionConsole\FilterLogic\obj\Debug\netcoreapp2.2\FilterLogic.dll
+C:\Users\VlAD\Desktop\EpamTasks\Expressions\ExpressionConsole\FilterLogic\obj\Debug\netcoreapp2.2\FilterLogic.pdb

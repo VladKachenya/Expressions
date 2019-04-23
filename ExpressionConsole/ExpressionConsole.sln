@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressionConsole", "ExpressionConsole\ExpressionConsole.csproj", "{2B3BA4D7-14C8-4DAA-ACA3-FDD993641385}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpressionConsole", "ExpressionConsole\ExpressionConsole.csproj", "{2B3BA4D7-14C8-4DAA-ACA3-FDD993641385}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilterLogic", "FilterLogic\FilterLogic.csproj", "{A8A0AD18-2B15-48A6-97C9-5C164A481BEE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{2B3BA4D7-14C8-4DAA-ACA3-FDD993641385}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B3BA4D7-14C8-4DAA-ACA3-FDD993641385}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B3BA4D7-14C8-4DAA-ACA3-FDD993641385}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8A0AD18-2B15-48A6-97C9-5C164A481BEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8A0AD18-2B15-48A6-97C9-5C164A481BEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8A0AD18-2B15-48A6-97C9-5C164A481BEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8A0AD18-2B15-48A6-97C9-5C164A481BEE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

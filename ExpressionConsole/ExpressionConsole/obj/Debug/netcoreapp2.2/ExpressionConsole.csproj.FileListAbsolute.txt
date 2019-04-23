@@ -1,0 +1,14 @@
+C:\Users\VlAD\Desktop\EpamTasks\Expressions\ExpressionConsole\ExpressionConsole\bin\Debug\netcoreapp2.2\ExpressionConsole.deps.json
+C:\Users\VlAD\Desktop\EpamTasks\Expressions\ExpressionConsole\ExpressionConsole\bin\Debug\netcoreapp2.2\ExpressionConsole.runtimeconfig.json
+C:\Users\VlAD\Desktop\EpamTasks\Expressions\ExpressionConsole\ExpressionConsole\bin\Debug\netcoreapp2.2\ExpressionConsole.runtimeconfig.dev.json
+C:\Users\VlAD\Desktop\EpamTasks\Expressions\ExpressionConsole\ExpressionConsole\bin\Debug\netcoreapp2.2\ExpressionConsole.dll
+C:\Users\VlAD\Desktop\EpamTasks\Expressions\ExpressionConsole\ExpressionConsole\bin\Debug\netcoreapp2.2\ExpressionConsole.pdb
+C:\Users\VlAD\Desktop\EpamTasks\Expressions\ExpressionConsole\ExpressionConsole\bin\Debug\netcoreapp2.2\FilterLogic.dll
+C:\Users\VlAD\Desktop\EpamTasks\Expressions\ExpressionConsole\ExpressionConsole\bin\Debug\netcoreapp2.2\FilterLogic.pdb
+C:\Users\VlAD\Desktop\EpamTasks\Expressions\ExpressionConsole\ExpressionConsole\obj\Debug\netcoreapp2.2\ExpressionConsole.csprojAssemblyReference.cache
+C:\Users\VlAD\Desktop\EpamTasks\Expressions\ExpressionConsole\ExpressionConsole\obj\Debug\netcoreapp2.2\ExpressionConsole.csproj.CoreCompileInputs.cache
+C:\Users\VlAD\Desktop\EpamTasks\Expressions\ExpressionConsole\ExpressionConsole\obj\Debug\netcoreapp2.2\ExpressionConsole.AssemblyInfoInputs.cache
+C:\Users\VlAD\Desktop\EpamTasks\Expressions\ExpressionConsole\ExpressionConsole\obj\Debug\netcoreapp2.2\ExpressionConsole.AssemblyInfo.cs
+C:\Users\VlAD\Desktop\EpamTasks\Expressions\ExpressionConsole\ExpressionConsole\obj\Debug\netcoreapp2.2\ExpressionConsole.csproj.CopyComplete
+C:\Users\VlAD\Desktop\EpamTasks\Expressions\ExpressionConsole\ExpressionConsole\obj\Debug\netcoreapp2.2\ExpressionConsole.dll
+C:\Users\VlAD\Desktop\EpamTasks\Expressions\ExpressionConsole\ExpressionConsole\obj\Debug\netcoreapp2.2\ExpressionConsole.pdb
