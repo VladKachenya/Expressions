@@ -6,15 +6,16 @@ namespace FilterLogic.Entities
     public class Prediction
     {
         public string PropertyName { get; set; }
-        public TypeCode TypeCode { get; set;}
-        public FilterAtction FilterAtction { get; set; }
+        public Type PropertyType { get; set;}
+        public Operation Operation { get; set; }
+        public Operation ConcatenationOperation { get; set; }
         public object RightValue { get; set; }
 
         public bool NeedRight()
         {
-            return FilterAtction == FilterAtction.Less
-                   || FilterAtction == FilterAtction.More
-                   || FilterAtction == FilterAtction.Equal;
+            return Operation == Operation.Less
+                   || Operation == Operation.More
+                   || Operation == Operation.Equal;
         }
     }
 }

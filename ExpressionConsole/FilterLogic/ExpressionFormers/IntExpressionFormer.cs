@@ -1,37 +1,27 @@
 ﻿using FilterLogic.Entities;
 using FilterLogic.Interfaces;
 using FilterLogic.Keys;
-using System;
 using System.Linq.Expressions;
 
 namespace FilterLogic.ExpressionFormers
 {
-    public class IntExpressionFormer : ExpressionFormerBase, IExpressionFormer
+    public class IntExpressionFormer : IExpressionFormer
     {
-        public override void Configure(IFilters predictionExpression, Prediction prediction)
+        public Expression FormExpression(IFilter predictionExpression, Prediction prediction)
         {
-            if (prediction.TypeCode == TypeCode.Int32)
-            {
-                var left = Expression.Property(predictionExpression.ParameterExpression, prediction.PropertyName);
-                var right = Expression.Constant(prediction.RightValue);
+            var left = Expression.Property(predictionExpression.ParameterExpression, prediction.PropertyName);
+            var right = Expression.Constant(prediction.RightValue);
 
-                switch (prediction.FilterAtction)
-                {
-                    case FilterAtction.Less:
-                        predictionExpression.Predicts.Add(Expression.LessThan(left, right));
-                        return;
-                    case FilterAtction.More:
-                        predictionExpression.Predicts.Add(Expression.GreaterThan(left, right));
-                        return;
-                    case FilterAtction.Equal:
-                        predictionExpression.Predicts.Add(Expression.Equal(left, right));
-                        return;
-                }
-            }
-            else
+            switch (prediction.Operation)
             {
-                base.Configure(predictionExpression, prediction);
+                case Operation.Less:
+                    return Expression.LessThan(left, right);
+                case Operation.More:
+                    return Expression.GreaterThan(left, right);
+                case Operation.Equal:
+                    return Expression.Equal(left, right);
             }
+            return null;
         }
     }
 }

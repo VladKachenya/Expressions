@@ -1,38 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using FilterLogic.Entities;
+﻿using FilterLogic.Entities;
 using FilterLogic.Interfaces;
 using FilterLogic.Keys;
+using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace FilterLogic.ExpressionFormers
 {
-    public class DataTimeExpressionFormer : ExpressionFormerBase, IExpressionFormer
+    public class DataTimeExpressionFormer : IExpressionFormer
     {
-        public override void Configure(IFilters predictionExpression, Prediction prediction)
+        public Expression FormExpression(IFilter predictionExpression, Prediction prediction)
         {
-            if (prediction.TypeCode == TypeCode.DateTime)
-            {
-                var boolExpression =
-                    Expression.Property(predictionExpression.ParameterExpression, prediction.PropertyName);
+            var boolExpression =
+                Expression.Property(predictionExpression.ParameterExpression, prediction.PropertyName);
 
-                switch (prediction.FilterAtction)
-                {
-                    case FilterAtction.Workday:
-                        predictionExpression.Predicts.Add(Expression.IsFalse(HolidayExpression(boolExpression)));
-                        return;
-                    case FilterAtction.Holiday:
-                        predictionExpression.Predicts.Add(Expression.IsTrue(HolidayExpression(boolExpression)));
-                        return;
-                }
-            }
-            else
+            switch (prediction.Operation)
             {
-                base.Configure(predictionExpression, prediction);
+                case Operation.Workday:
+                    return Expression.IsFalse(HolidayExpression(boolExpression));
+                case Operation.Holiday:
+                    return Expression.IsTrue(HolidayExpression(boolExpression));
             }
+            return null;
         }
 
-        private Expression HolidayExpression(Expression boolExpression)
+        protected Expression HolidayExpression(Expression boolExpression)
         {
             var dayOfWeek = Expression.Property(boolExpression, nameof(DateTime.Now.DayOfWeek));
             var holidayDays = new List<DayOfWeek>() { DayOfWeek.Saturday, DayOfWeek.Sunday };

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FilterLogic.Model
+namespace ExpressionConsole.Model
 {
     public class SomeData
     {

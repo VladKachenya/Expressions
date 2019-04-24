@@ -1,32 +1,33 @@
-﻿using System;
+﻿using ExpressionConsole.Model;
 using FilterLogic;
 using FilterLogic.Entities;
-using FilterLogic.Interfaces;
 using FilterLogic.Keys;
-using FilterLogic.Model;
+using System;
 
 namespace ExpressionConsole
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            var expressionFormerFactory = new ExpressionFormerBuilder();
-            var expressionFormer = expressionFormerFactory.GetExpressionFormer();
-            var predictionExpression = new PredictionExpression<SomeData>(); 
+            var expressionFormerFactory = new ExpressionConfiguratorBuilder();
+            var expressionFormer = expressionFormerFactory.Build();
+            var predictionExpression = new Filter<SomeData>();
             var prediction = new Prediction();
 
             ///
-            prediction.TypeCode = TypeCode.Int32;
-            prediction.FilterAtction = FilterAtction.Equal;
+            prediction.PropertyType = typeof(int);
+            prediction.ConcatenationOperation = Operation.Or; 
+            prediction.Operation = Operation.Equal;
             prediction.PropertyName = nameof(SomeData.Id);
             prediction.RightValue = 5;
 
             expressionFormer.Configure(predictionExpression, prediction);
 
             ///
-            prediction.TypeCode = TypeCode.DateTime;
-            prediction.FilterAtction = FilterAtction.Workday;
+            prediction.PropertyType = typeof(DateTime);
+            prediction.Operation = Operation.Workday;
+            prediction.ConcatenationOperation = Operation.And;
             prediction.PropertyName = nameof(SomeData.Birthday);
 
             expressionFormer.Configure(predictionExpression, prediction);

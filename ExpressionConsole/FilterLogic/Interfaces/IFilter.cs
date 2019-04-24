@@ -3,9 +3,9 @@ using System.Linq.Expressions;
 
 namespace FilterLogic.Interfaces
 {
-    public interface IFilters
+    public interface IFilter
     {
         ParameterExpression ParameterExpression { get; set; }
-        List<Expression> Predicts { get; }
+        BinaryExpression FinalExpression { get; set; }
     }
 }

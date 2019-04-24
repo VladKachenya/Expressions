@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace FilterLogic.Model
+namespace ExpressionConsole.Model
 {
     public class SomeDataFactory
     {
