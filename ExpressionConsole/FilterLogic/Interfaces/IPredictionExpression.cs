@@ -1,10 +1,11 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Linq.Expressions;
 
 namespace FilterLogic.Interfaces
 {
-    public interface IPredictionExpression<T> : IFilter
+    public interface IPredictionExpression
     {
-        Expression<Func<T, bool>> GetLambda();
+        ParameterExpression ParameterExpression { get; set; }
+        BinaryExpression FinalExpression { get; set; }
     }
 }

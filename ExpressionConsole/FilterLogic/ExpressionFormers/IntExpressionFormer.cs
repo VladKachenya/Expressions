@@ -7,7 +7,7 @@ using FilterLogic.Heplers;
 
 namespace FilterLogic.ExpressionFormers
 {
-    public class IntExpressionFormer : ExpressionFormerBase, IExpressionFormer
+    internal class IntExpressionFormer : ExpressionFormerBase, IExpressionFormer
     {
         public IntExpressionFormer()
         {
@@ -15,16 +15,16 @@ namespace FilterLogic.ExpressionFormers
             _operations.Add(OperationKeys.MoreKey, expression => Expression.GreaterThan(expression[0], expression[1]));
             _operations.Add(OperationKeys.EqualKey, expression => Expression.Equal(expression[0], expression[1]));
         }
-        public Expression FormExpression(IFilter predictionExpression, Prediction prediction)
+        public Expression FormExpression(IPredictionExpression predictionExpression, Prediction prediction)
         {
             var left = Expression.Property(predictionExpression.ParameterExpression, prediction.PropertyName);
             var right = Expression.Constant(prediction.RightValue);
             return _operations[prediction.Operation.OperationName].Invoke(new Expression[] { left, right});
         }
 
-        public List<Operation> GetOperations()
+        public List<IOperation> GetOperations()
         {
-            var res = new List<Operation>();
+            var res = new List<IOperation>();
             foreach (var operation in _operations)
             {
                 res.Add(new Operation() { OperationName = operation.Key, NeedRight = true});

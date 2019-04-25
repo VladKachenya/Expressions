@@ -7,7 +7,7 @@ namespace FilterLogic.Interfaces
 {
     public interface IExpressionFormer
     {
-        Expression FormExpression(IFilter predictionExpression, Prediction prediction);
-        List<Operation> GetOperations();
+        Expression FormExpression(IPredictionExpression predictionExpression, Prediction prediction);
+        List<IOperation> GetOperations();
     }
 }

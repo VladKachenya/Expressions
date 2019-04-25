@@ -9,7 +9,7 @@ using FilterLogic.Heplers;
 
 namespace FilterLogic.ExpressionFormers
 {
-    public class DataTimeExpressionFormer : ExpressionFormerBase, IExpressionFormer
+    internal class DataTimeExpressionFormer : ExpressionFormerBase, IExpressionFormer
     {
         public DataTimeExpressionFormer()
         {
@@ -17,16 +17,16 @@ namespace FilterLogic.ExpressionFormers
             _operations.Add(OperationKeys.HolidayKey, expression => Expression.IsTrue(HolidayExpression(expression[0])));
         }
 
-        public Expression FormExpression(IFilter predictionExpression, Prediction prediction)
+        public Expression FormExpression(IPredictionExpression predictionExpression, Prediction prediction)
         {
             var boolExpression =
                 Expression.Property(predictionExpression.ParameterExpression, prediction.PropertyName);
             return _operations[prediction.Operation.OperationName].Invoke(new []{boolExpression});
         }
 
-        public List<Operation> GetOperations()
+        public List<IOperation> GetOperations()
         {
-            var res = new List<Operation>();
+            var res = new List<IOperation>();
             foreach (var operation in _operations)
             {
                 res.Add(new Operation(){OperationName = operation.Key});
@@ -34,7 +34,6 @@ namespace FilterLogic.ExpressionFormers
 
             return res;
         }
-
 
         protected Expression HolidayExpression(Expression boolExpression)
         {
