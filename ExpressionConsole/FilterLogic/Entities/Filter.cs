@@ -2,7 +2,7 @@
 using System;
 using System.Linq.Expressions;
 
-namespace FilterLogic.Entities
+namespace FilterLogic.Helpers
 {
     public class Filter<T> : IPredictionExpression<T>
     {

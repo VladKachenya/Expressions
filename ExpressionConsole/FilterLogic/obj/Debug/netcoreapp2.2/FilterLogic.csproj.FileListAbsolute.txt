@@ -7,3 +7,12 @@ C:\Users\VlAD\Desktop\EpamTasks\Expressions\ExpressionConsole\FilterLogic\obj\De
 C:\Users\VlAD\Desktop\EpamTasks\Expressions\ExpressionConsole\FilterLogic\obj\Debug\netcoreapp2.2\FilterLogic.AssemblyInfo.cs
 C:\Users\VlAD\Desktop\EpamTasks\Expressions\ExpressionConsole\FilterLogic\obj\Debug\netcoreapp2.2\FilterLogic.dll
 C:\Users\VlAD\Desktop\EpamTasks\Expressions\ExpressionConsole\FilterLogic\obj\Debug\netcoreapp2.2\FilterLogic.pdb
+C:\Users\Vlad_UPR\Desktop\GitHub Repositores\Expressions\ExpressionConsole\FilterLogic\obj\Debug\netcoreapp2.2\FilterLogic.csprojAssemblyReference.cache
+C:\Users\Vlad_UPR\Desktop\GitHub Repositores\Expressions\ExpressionConsole\FilterLogic\obj\Debug\netcoreapp2.2\FilterLogic.csproj.CoreCompileInputs.cache
+C:\Users\Vlad_UPR\Desktop\GitHub Repositores\Expressions\ExpressionConsole\FilterLogic\obj\Debug\netcoreapp2.2\FilterLogic.AssemblyInfoInputs.cache
+C:\Users\Vlad_UPR\Desktop\GitHub Repositores\Expressions\ExpressionConsole\FilterLogic\obj\Debug\netcoreapp2.2\FilterLogic.AssemblyInfo.cs
+C:\Users\Vlad_UPR\Desktop\GitHub Repositores\Expressions\ExpressionConsole\FilterLogic\obj\Debug\netcoreapp2.2\FilterLogic.dll
+C:\Users\Vlad_UPR\Desktop\GitHub Repositores\Expressions\ExpressionConsole\FilterLogic\obj\Debug\netcoreapp2.2\FilterLogic.pdb
+C:\Users\Vlad_UPR\Desktop\GitHub Repositores\Expressions\ExpressionConsole\FilterLogic\bin\Debug\netcoreapp2.2\FilterLogic.deps.json
+C:\Users\Vlad_UPR\Desktop\GitHub Repositores\Expressions\ExpressionConsole\FilterLogic\bin\Debug\netcoreapp2.2\FilterLogic.dll
+C:\Users\Vlad_UPR\Desktop\GitHub Repositores\Expressions\ExpressionConsole\FilterLogic\bin\Debug\netcoreapp2.2\FilterLogic.pdb

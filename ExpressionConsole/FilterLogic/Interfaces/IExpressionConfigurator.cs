@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using FilterLogic.Entities;
+using FilterLogic.Helpers;
 
 namespace FilterLogic.Interfaces
 {
     public interface IExpressionConfigurator
     {
-        Dictionary<Type, IExpressionFormer> Formers { get; }
-
+        Dictionary<Guid, IExpressionFormer> Formers { get; }
         void Configure(IFilter predictionExpression, Prediction prediction);
-
     }
 }

@@ -1,28 +1,40 @@
-﻿using FilterLogic.Entities;
+﻿using FilterLogic.Helpers;
 using FilterLogic.Interfaces;
 using FilterLogic.Keys;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
+using FilterLogic.Heplers;
 
 namespace FilterLogic.ExpressionFormers
 {
-    public class DataTimeExpressionFormer : IExpressionFormer
+    public class DataTimeExpressionFormer : ExpressionFormerBase, IExpressionFormer
     {
+        public DataTimeExpressionFormer()
+        {
+            _operations.Add(OperationKeys.WorkdayKey, expression => Expression.IsFalse(HolidayExpression(expression[0])));
+            _operations.Add(OperationKeys.HolidayKey, expression => Expression.IsTrue(HolidayExpression(expression[0])));
+        }
+
         public Expression FormExpression(IFilter predictionExpression, Prediction prediction)
         {
             var boolExpression =
                 Expression.Property(predictionExpression.ParameterExpression, prediction.PropertyName);
-
-            switch (prediction.Operation)
-            {
-                case Operation.Workday:
-                    return Expression.IsFalse(HolidayExpression(boolExpression));
-                case Operation.Holiday:
-                    return Expression.IsTrue(HolidayExpression(boolExpression));
-            }
-            return null;
+            return _operations[prediction.Operation.OperationName].Invoke(new []{boolExpression});
         }
+
+        public List<Operation> GetOperations()
+        {
+            var res = new List<Operation>();
+            foreach (var operation in _operations)
+            {
+                res.Add(new Operation(){OperationName = operation.Key});
+            }
+
+            return res;
+        }
+
 
         protected Expression HolidayExpression(Expression boolExpression)
         {
