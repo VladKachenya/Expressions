@@ -31,12 +31,14 @@ namespace ExpressionConsole
             var res = new List<IOperation>();
             foreach (var operation in Enum.GetValues(typeof(Shapes)))
             {
-                res.Add(new Operation<string>() { OperationName = operation.ToString(), NeedRight = false });
+                res.Add(new Operation(typeof(string)) { OperationName = operation.ToString(), NeedRight = false });
             }
-            res.Add(new Operation<int>( ) {OperationName = "More for Area", NeedRight = true});
-            res.Add(new Operation<int>() { OperationName = "Less for Area", NeedRight = true });
-            res.Add(new Operation<int>() { OperationName = "More for Perimetr", NeedRight = true });
-            res.Add(new Operation<int>() { OperationName = "Less for Perimetr", NeedRight = true });
+
+            var intType = typeof(int);
+            res.Add(new Operation(intType) {OperationName = "More for Area", NeedRight = true});
+            res.Add(new Operation(intType) { OperationName = "Less for Area", NeedRight = true });
+            res.Add(new Operation(intType) { OperationName = "More for Perimetr", NeedRight = true });
+            res.Add(new Operation(intType) { OperationName = "Less for Perimetr", NeedRight = true });
 
             return res;
         }

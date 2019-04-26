@@ -22,7 +22,7 @@ namespace FilterLogic.ExpressionFormers
             var res = new List<IOperation>();
             foreach (var operation in _operations)
             {
-                res.Add(new Operation<DateTime>(){OperationName = operation.Key});
+                res.Add(new Operation(typeof(DateTime)){OperationName = operation.Key});
             }
 
             return res;

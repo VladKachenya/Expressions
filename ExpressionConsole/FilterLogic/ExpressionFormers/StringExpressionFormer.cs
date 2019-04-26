@@ -21,7 +21,7 @@ namespace FilterLogic.ExpressionFormers
             var res = new List<IOperation>();
             foreach (var operation in _operations)
             {
-                res.Add(new Operation<string>() { OperationName = operation.Key, NeedRight = true });
+                res.Add(new Operation(typeof(string)) { OperationName = operation.Key, NeedRight = true });
             }
             return res;
         }

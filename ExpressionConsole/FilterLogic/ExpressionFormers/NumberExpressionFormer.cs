@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using FilterLogic.Helpers;
 using FilterLogic.Interfaces;
 using FilterLogic.Keys;
@@ -7,12 +8,15 @@ using FilterLogic.Heplers;
 
 namespace FilterLogic.ExpressionFormers
 {
-    public class IntExpressionFormer : ExpressionFormerBase
+    public class NumberExpressionFormer: ExpressionFormerBase
     {
-        public IntExpressionFormer()
+        private readonly Type _operandType;
+
+        public NumberExpressionFormer(Type operandType) 
         {
+            _operandType = operandType;
             _operations.Add(OperationKeys.LessKey, Expression.LessThan);
-            _operations.Add(OperationKeys.MoreKey,Expression.GreaterThan);
+            _operations.Add(OperationKeys.MoreKey, Expression.GreaterThan);
             _operations.Add(OperationKeys.EqualKey, Expression.Equal);
         }
         
@@ -21,7 +25,7 @@ namespace FilterLogic.ExpressionFormers
             var res = new List<IOperation>();
             foreach (var operation in _operations)
             {
-                res.Add(new Operation<int>() { OperationName = operation.Key, NeedRight = true});
+                res.Add(new Operation(_operandType) { OperationName = operation.Key, NeedRight = true});
             }
             return res;
         }

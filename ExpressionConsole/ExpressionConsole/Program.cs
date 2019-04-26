@@ -1,14 +1,9 @@
 ﻿using ExpressionConsole.Model;
-using FilterLogic;
-using FilterLogic.Heplers;
-using FilterLogic.Keys;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using ExpressionConsole.CustomExpressionFormers;
 using FilterLogic.Builders;
 using FilterLogic.Entities;
 using FilterLogic.ExpressionFormers;
+using FilterLogic.Heplers;
+using System;
 
 namespace ExpressionConsole
 {
@@ -27,11 +22,13 @@ namespace ExpressionConsole
             // 
 
             var expressionConfigurator = new ExpressionConfigurator();
-            // Добовляем пользовательский формерователь выражения для типа SomeShape
-            expressionConfigurator.AddOrReplaceExpressionFormerForType(typeof(SomeShape), new CustomExpressionFormer());
-            expressionConfigurator.AddOrReplaceExpressionFormerForType(typeof(int), new IntExpressionFormer());
+            expressionConfigurator.AddOrReplaceExpressionFormerForType(typeof(int), new NumberExpressionFormer(typeof(int)));
+            expressionConfigurator.AddOrReplaceExpressionFormerForType(typeof(float), new NumberExpressionFormer(typeof(float)));
             expressionConfigurator.AddOrReplaceExpressionFormerForType(typeof(DateTime), new DataTimeExpressionFormer());
             expressionConfigurator.AddOrReplaceExpressionFormerForType(typeof(string), new StringExpressionFormer());
+            // Добовляем пользовательский формерователь выражения для типа SomeShape
+            expressionConfigurator.AddOrReplaceExpressionFormerForType(typeof(SomeShape), new CustomExpressionFormer());
+
 
             var filterFactory = new FilterFactory<SomeData>(expressionConfigurator);
             var filter = filterFactory.GetFilter();
@@ -40,12 +37,13 @@ namespace ExpressionConsole
 
             while (true)
             {
-                Console.WriteLine($"Curient lambda: {filter.GetLambda()}");
+                Console.WriteLine();
+                Console.WriteLine($"Query: {filter.GetLambda()}");
                 for (int i = 0; i < availableConcatenationOperations.Count; i++)
                 {
                     Console.WriteLine($"{i}) {availableConcatenationOperations[i]}");
                 }
-                Console.Write("Choose filters concatenation operation (index) or -1 to end: : ");
+                Console.Write("Choose filters concatenation operation (index) or -1 to do filtring: ");
                 var indexOfConcatenationOperation = ReadPositiveNumberLessThan(availableConcatenationOperations.Count, true);
                 if (indexOfConcatenationOperation == -1)
                 {
@@ -60,7 +58,7 @@ namespace ExpressionConsole
                 {
                     Console.WriteLine($"{i}) {filteredProperties[i].PropertyName}");
                 }
-                Console.Write($"Choose field (index) ");
+                Console.Write($"Choose property (index) ");
                 var indexOfProrety = ReadPositiveNumberLessThan(filteredProperties.Count);
                 var filteredProperty = filteredProperties[indexOfProrety];
                 prediction.PropertyName = filteredProperty.PropertyName;
@@ -87,8 +85,6 @@ namespace ExpressionConsole
 
                 expressionConfigurator.Configure(filter, prediction);
             }
-
-            Console.WriteLine($"lambda: {filter.GetLambda()}");
 
             var filtered = filter.Filter(someDatas);
             foreach (var round in filtered)
@@ -131,7 +127,11 @@ namespace ExpressionConsole
             while (true)
             {
                 index = ReadObj<int>();
-                if(index >= 0 && index < count || isMinusOneAcceptable && index == -1) break;
+                if (index >= 0 && index < count || isMinusOneAcceptable && index == -1)
+                {
+                    break;
+                }
+
                 Console.WriteLine($"The number must be in the range from 0 to {count - 1}");
             }
 
