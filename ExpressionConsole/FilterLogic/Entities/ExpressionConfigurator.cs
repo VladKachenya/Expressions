@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 
 namespace FilterLogic.Entities
 {
-    internal class ExpressionConfigurator : IExpressionConfigurator
+    public class ExpressionConfigurator : IExpressionConfigurator
     {
         private Dictionary<Guid, IExpressionFormer> _formers { get; } = new Dictionary<Guid, IExpressionFormer>();
 
@@ -19,6 +19,11 @@ namespace FilterLogic.Entities
             var expression = _formers[prediction.PropertyType.GUID].FormExpression(predictionExpression, prediction);
             if (expression != null)
             {
+                if (prediction.IsInvers)
+                {
+                    expression = Expression.Not(expression);
+                }
+
                 switch (prediction.ConcatenationOperation)
                 {
                     case ConcatenationOperation.And:
@@ -28,6 +33,10 @@ namespace FilterLogic.Entities
                     case ConcatenationOperation.Or:
                         predictionExpression.FinalExpression =
                             Expression.Or(predictionExpression.FinalExpression, expression);
+                        break;
+                    case ConcatenationOperation.Xor:
+                        predictionExpression.FinalExpression =
+                            Expression.ExclusiveOr(predictionExpression.FinalExpression, expression);
                         break;
                 }
             }

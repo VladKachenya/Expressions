@@ -9,27 +9,20 @@ using FilterLogic.Heplers;
 
 namespace FilterLogic.ExpressionFormers
 {
-    internal class DataTimeExpressionFormer : ExpressionFormerBase, IExpressionFormer
+    public class DataTimeExpressionFormer : ExpressionFormerBase
     {
         public DataTimeExpressionFormer()
         {
-            _operations.Add(OperationKeys.WorkdayKey, expression => Expression.IsFalse(HolidayExpression(expression[0])));
-            _operations.Add(OperationKeys.HolidayKey, expression => Expression.IsTrue(HolidayExpression(expression[0])));
+            _operations.Add(OperationKeys.WorkdayKey, (left, right) => Expression.IsFalse(HolidayExpression(left)));
+            _operations.Add(OperationKeys.HolidayKey, (left, right) => Expression.IsTrue(HolidayExpression(left)));
         }
 
-        public Expression FormExpression(IPredictionExpression predictionExpression, Prediction prediction)
-        {
-            var boolExpression =
-                Expression.Property(predictionExpression.ParameterExpression, prediction.PropertyName);
-            return _operations[prediction.Operation.OperationName].Invoke(new []{boolExpression});
-        }
-
-        public List<IOperation> GetOperations()
+        public override List<IOperation> GetOperations()
         {
             var res = new List<IOperation>();
             foreach (var operation in _operations)
             {
-                res.Add(new Operation(){OperationName = operation.Key});
+                res.Add(new Operation<DateTime>(){OperationName = operation.Key});
             }
 
             return res;

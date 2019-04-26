@@ -5,6 +5,10 @@ using FilterLogic.Keys;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using ExpressionConsole.CustomExpressionFormers;
+using FilterLogic.Builders;
+using FilterLogic.Entities;
+using FilterLogic.ExpressionFormers;
 
 namespace ExpressionConsole
 {
@@ -21,39 +25,46 @@ namespace ExpressionConsole
 
 
             // 
-            var expressionConfiguratorBuilder = new ExpressionConfiguratorBuilder();
-            var expressionConfigurator = expressionConfiguratorBuilder.Build();
-            var filterFactory = new FilterFactory<SomeData>(expressionConfigurator);
 
+            var expressionConfigurator = new ExpressionConfigurator();
+            // Добовляем пользовательский формерователь выражения для типа SomeShape
+            expressionConfigurator.AddOrReplaceExpressionFormerForType(typeof(SomeShape), new CustomExpressionFormer());
+            expressionConfigurator.AddOrReplaceExpressionFormerForType(typeof(int), new IntExpressionFormer());
+            expressionConfigurator.AddOrReplaceExpressionFormerForType(typeof(DateTime), new DataTimeExpressionFormer());
+            expressionConfigurator.AddOrReplaceExpressionFormerForType(typeof(string), new StringExpressionFormer());
+
+            var filterFactory = new FilterFactory<SomeData>(expressionConfigurator);
             var filter = filterFactory.GetFilter();
-            var filteredProperties = filterFactory.GetFilterPropertiesOfType();
+            var filteredProperties = filterFactory.GetFilterProperties();
             var availableConcatenationOperations = expressionConfigurator.GetAvailableConcatenationOperations();
 
             while (true)
             {
-                var prediction = new Prediction();
-                for (int i = 0; i < filteredProperties.Count; i++)
-                {
-                    Console.WriteLine($"{i}) {filteredProperties[i].PropertyName}");
-                }
-                Console.Write($"Choose field (index) or -1 to end: ");
-                var indexOfProrety = ReadPositiveNumberLessThan(filteredProperties.Count, true);
-                if (indexOfProrety == -1)
-                {
-                    break;
-                }
-
-                var filteredProperty = filteredProperties[indexOfProrety];
-                prediction.PropertyName = filteredProperty.PropertyName;
-                prediction.PropertyType = filteredProperty.PropertyType;
-
+                Console.WriteLine($"Curient lambda: {filter.GetLambda()}");
                 for (int i = 0; i < availableConcatenationOperations.Count; i++)
                 {
                     Console.WriteLine($"{i}) {availableConcatenationOperations[i]}");
                 }
-                Console.Write("Choose filters concatenation operation (index): ");
-                var indexOfConcatenationOperation = ReadPositiveNumberLessThan(availableConcatenationOperations.Count);
+                Console.Write("Choose filters concatenation operation (index) or -1 to end: : ");
+                var indexOfConcatenationOperation = ReadPositiveNumberLessThan(availableConcatenationOperations.Count, true);
+                if (indexOfConcatenationOperation == -1)
+                {
+                    break;
+                }
+
+                Console.WriteLine();
+                Console.WriteLine($"Start pediction configration");
+                var prediction = new Prediction();
                 prediction.ConcatenationOperation = availableConcatenationOperations[indexOfConcatenationOperation];
+                for (int i = 0; i < filteredProperties.Count; i++)
+                {
+                    Console.WriteLine($"{i}) {filteredProperties[i].PropertyName}");
+                }
+                Console.Write($"Choose field (index) ");
+                var indexOfProrety = ReadPositiveNumberLessThan(filteredProperties.Count);
+                var filteredProperty = filteredProperties[indexOfProrety];
+                prediction.PropertyName = filteredProperty.PropertyName;
+                prediction.PropertyType = filteredProperty.PropertyType;
 
                 for (int i = 0; i < filteredProperty.AvailableOperations.Count; i++)
                 {
@@ -66,9 +77,13 @@ namespace ExpressionConsole
                 if (prediction.Operation.NeedRight)
                 {
                     Console.Write("Set right part: ");
-                    var rightPart = ReadObj(prediction.PropertyType);
+                    var rightPart = ReadObj(prediction.Operation.OperandType);
                     prediction.RightValue = rightPart;
                 }
+
+                Console.WriteLine("0) Not invert");
+                Console.WriteLine("1) Invert");
+                prediction.IsInvers = ReadPositiveNumberLessThan(2) == 1;
 
                 expressionConfigurator.Configure(filter, prediction);
             }

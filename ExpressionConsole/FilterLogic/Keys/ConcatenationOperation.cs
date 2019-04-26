@@ -3,6 +3,7 @@
     public enum ConcatenationOperation
     {
         Or = 1,
-        And
+        And,
+        Xor
     }
 }

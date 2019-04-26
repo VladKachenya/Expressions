@@ -7,27 +7,21 @@ using FilterLogic.Heplers;
 
 namespace FilterLogic.ExpressionFormers
 {
-    internal class IntExpressionFormer : ExpressionFormerBase, IExpressionFormer
+    public class IntExpressionFormer : ExpressionFormerBase
     {
         public IntExpressionFormer()
         {
-            _operations.Add(OperationKeys.LessKey, expression => Expression.LessThan(expression[0], expression[1]));
-            _operations.Add(OperationKeys.MoreKey, expression => Expression.GreaterThan(expression[0], expression[1]));
-            _operations.Add(OperationKeys.EqualKey, expression => Expression.Equal(expression[0], expression[1]));
+            _operations.Add(OperationKeys.LessKey, Expression.LessThan);
+            _operations.Add(OperationKeys.MoreKey,Expression.GreaterThan);
+            _operations.Add(OperationKeys.EqualKey, Expression.Equal);
         }
-        public Expression FormExpression(IPredictionExpression predictionExpression, Prediction prediction)
-        {
-            var left = Expression.Property(predictionExpression.ParameterExpression, prediction.PropertyName);
-            var right = Expression.Constant(prediction.RightValue);
-            return _operations[prediction.Operation.OperationName].Invoke(new Expression[] { left, right});
-        }
-
-        public List<IOperation> GetOperations()
+        
+        public override List<IOperation> GetOperations()
         {
             var res = new List<IOperation>();
             foreach (var operation in _operations)
             {
-                res.Add(new Operation() { OperationName = operation.Key, NeedRight = true});
+                res.Add(new Operation<int>() { OperationName = operation.Key, NeedRight = true});
             }
             return res;
         }

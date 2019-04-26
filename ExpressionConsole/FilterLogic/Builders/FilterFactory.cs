@@ -1,11 +1,11 @@
-﻿using FilterLogic.Helpers;
-using FilterLogic.Heplers;
-using FilterLogic.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using FilterLogic.Helpers;
+using FilterLogic.Heplers;
+using FilterLogic.Interfaces;
 
-namespace FilterLogic
+namespace FilterLogic.Builders
 {
     public class FilterFactory<T>
     {
@@ -16,7 +16,7 @@ namespace FilterLogic
             _expressionConfigurator = expressionConfigurator;
         }
 
-        public List<IFilterProperty> GetFilterPropertiesOfType()
+        public List<IFilterProperty> GetFilterProperties()
         {
             var type = typeof(T);
             var res = new List<IFilterProperty>();
