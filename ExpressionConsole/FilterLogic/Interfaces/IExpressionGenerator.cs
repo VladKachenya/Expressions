@@ -5,9 +5,9 @@ using FilterLogic.Heplers;
 
 namespace FilterLogic.Interfaces
 {
-    public interface IExpressionFormer
+    public interface IExpressionGenerator
     {
-        Expression FormExpression(IPredictionExpression predictionExpression, Prediction prediction);
+        Expression GenerateExpression(IFilterExpression filterExpression, Prediction prediction);
         List<IOperation> GetOperations();
     }
 }

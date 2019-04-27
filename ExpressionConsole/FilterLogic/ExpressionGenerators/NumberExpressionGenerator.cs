@@ -1,23 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using FilterLogic.Helpers;
-using FilterLogic.Interfaces;
-using FilterLogic.Keys;
 using System.Linq.Expressions;
 using FilterLogic.Heplers;
+using FilterLogic.Interfaces;
+using FilterLogic.Keys;
 
-namespace FilterLogic.ExpressionFormers
+namespace FilterLogic.ExpressionGenerators
 {
-    public class NumberExpressionFormer: ExpressionFormerBase
+    public class NumberExpressionGenerator: ExpressionGeneratorBase
     {
         private readonly Type _operandType;
 
-        public NumberExpressionFormer(Type operandType) 
+        public NumberExpressionGenerator(Type operandType) 
         {
             _operandType = operandType;
-            _operations.Add(OperationKeys.LessKey, Expression.LessThan);
-            _operations.Add(OperationKeys.MoreKey, Expression.GreaterThan);
-            _operations.Add(OperationKeys.EqualKey, Expression.Equal);
+            _operations.Add(OperationKeys.Less, Expression.LessThan);
+            _operations.Add(OperationKeys.More, Expression.GreaterThan);
+            _operations.Add(OperationKeys.Equal, Expression.Equal);
         }
         
         public override List<IOperation> GetOperations()

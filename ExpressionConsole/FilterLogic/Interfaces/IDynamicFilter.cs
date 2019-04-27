@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace FilterLogic.Interfaces
 {
-    public interface IDynamicFilter<T> : IPredictionExpression
+    public interface IDynamicFilter<T> : IFilterExpression
     {
         Expression<Func<T, bool>> GetLambda();
         IQueryable<T> Filter(List<T> inputList);

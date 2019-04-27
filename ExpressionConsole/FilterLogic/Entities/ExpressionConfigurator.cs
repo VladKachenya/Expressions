@@ -10,13 +10,13 @@ namespace FilterLogic.Entities
 {
     public class ExpressionConfigurator : IExpressionConfigurator
     {
-        private Dictionary<Guid, IExpressionFormer> _formers { get; } = new Dictionary<Guid, IExpressionFormer>();
+        private Dictionary<Guid, IExpressionGenerator> _formers { get; } = new Dictionary<Guid, IExpressionGenerator>();
 
        
 
-        public void Configure(IPredictionExpression predictionExpression, Prediction prediction)
+        public void Configure(IFilterExpression filterExpression, Prediction prediction)
         {
-            var expression = _formers[prediction.PropertyType.GUID].FormExpression(predictionExpression, prediction);
+            var expression = _formers[prediction.PropertyType.GUID].GenerateExpression(filterExpression, prediction);
             if (expression != null)
             {
                 if (prediction.IsInvers)
@@ -27,28 +27,28 @@ namespace FilterLogic.Entities
                 switch (prediction.ConcatenationOperation)
                 {
                     case ConcatenationOperation.And:
-                        predictionExpression.FinalExpression =
-                            Expression.And(predictionExpression.FinalExpression, expression);
+                        filterExpression.FinalExpression =
+                            Expression.And(filterExpression.FinalExpression, expression);
                         break;
                     case ConcatenationOperation.Or:
-                        predictionExpression.FinalExpression =
-                            Expression.Or(predictionExpression.FinalExpression, expression);
+                        filterExpression.FinalExpression =
+                            Expression.Or(filterExpression.FinalExpression, expression);
                         break;
                     case ConcatenationOperation.Xor:
-                        predictionExpression.FinalExpression =
-                            Expression.ExclusiveOr(predictionExpression.FinalExpression, expression);
+                        filterExpression.FinalExpression =
+                            Expression.ExclusiveOr(filterExpression.FinalExpression, expression);
                         break;
                 }
             }
         }
 
-        public void AddOrReplaceExpressionFormerForType(Type type, IExpressionFormer expressionFormer)
+        public void AddOrReplaceExpressionGeneratorForType(Type type, IExpressionGenerator expressionGenerator)
         {
             if (_formers.ContainsKey(type.GUID))
             {
                 _formers.Remove(type.GUID);
             }
-            _formers.Add(type.GUID, expressionFormer);
+            _formers.Add(type.GUID, expressionGenerator);
         }
 
         public List<IOperation> GetAvailableOperationsOfType(Type type)

@@ -1,18 +1,18 @@
-﻿using FilterLogic.Heplers;
-using FilterLogic.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using FilterLogic.Heplers;
+using FilterLogic.Interfaces;
 
-namespace FilterLogic.ExpressionFormers
+namespace FilterLogic.ExpressionGenerators
 {
-    public abstract class ExpressionFormerBase : IExpressionFormer
+    public abstract class ExpressionGeneratorBase : IExpressionGenerator
     {
         protected Dictionary<string, Func<Expression, Expression, Expression>> _operations = new Dictionary<string, Func<Expression, Expression, Expression>>();
 
-        public Expression FormExpression(IPredictionExpression predictionExpression, Prediction prediction)
+        public Expression GenerateExpression(IFilterExpression filterExpression, Prediction prediction)
         {
-            var left = Expression.Property(predictionExpression.ParameterExpression, prediction.PropertyName);
+            var left = Expression.Property(filterExpression.ParameterExpression, prediction.PropertyName);
             var right = Expression.Constant(prediction.RightValue);
             return _operations[prediction.Operation.OperationName].Invoke(left, right);
         }

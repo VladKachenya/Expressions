@@ -8,8 +8,8 @@ namespace FilterLogic.Interfaces
 {
     public interface IExpressionConfigurator
     {
-        void Configure(IPredictionExpression predictionExpression, Prediction prediction);
-        void AddOrReplaceExpressionFormerForType(Type type, IExpressionFormer expressionFormer);
+        void Configure(IFilterExpression filterExpression, Prediction prediction);
+        void AddOrReplaceExpressionGeneratorForType(Type type, IExpressionGenerator expressionGenerator);
         List<IOperation> GetAvailableOperationsOfType(Type type);
         List<ConcatenationOperation> GetAvailableConcatenationOperations();
     }

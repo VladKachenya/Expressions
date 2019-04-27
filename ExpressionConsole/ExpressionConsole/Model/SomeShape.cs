@@ -2,23 +2,21 @@
 {
     public class SomeShape
     {
-        private readonly int _perimetr;
-        private readonly int _area;
 
         public SomeShape(int perimetr, int area, Shapes name)
         {
             Name = name;
-            _perimetr = perimetr;
-            _area = area;
+            Perimetr = perimetr;
+            Area = area;
         }
 
-        public int Perimetr => _perimetr;
-        public int Area => _area;
+        public int Perimetr { get; }
+        public int Area {get;}
         public Shapes Name { get; }
 
         public override string ToString()
         {
-            return $"{Name} P: {_perimetr}, A: {_area}";
+            return $"{Name} P: {Perimetr}, A: {Area}";
         }
     }
 }

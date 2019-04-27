@@ -1,9 +1,9 @@
 ﻿using ExpressionConsole.Model;
 using FilterLogic.Builders;
 using FilterLogic.Entities;
-using FilterLogic.ExpressionFormers;
 using FilterLogic.Heplers;
 using System;
+using FilterLogic.ExpressionGenerators;
 
 namespace ExpressionConsole
 {
@@ -16,24 +16,20 @@ namespace ExpressionConsole
             foreach (var data in someDatas)
             {
                 Console.WriteLine(data);
-            }
-
-
-            // 
+            } 
 
             var expressionConfigurator = new ExpressionConfigurator();
-            expressionConfigurator.AddOrReplaceExpressionFormerForType(typeof(int), new NumberExpressionFormer(typeof(int)));
-            expressionConfigurator.AddOrReplaceExpressionFormerForType(typeof(float), new NumberExpressionFormer(typeof(float)));
-            expressionConfigurator.AddOrReplaceExpressionFormerForType(typeof(DateTime), new DataTimeExpressionFormer());
-            expressionConfigurator.AddOrReplaceExpressionFormerForType(typeof(string), new StringExpressionFormer());
+            expressionConfigurator.AddOrReplaceExpressionGeneratorForType(typeof(int), new NumberExpressionGenerator(typeof(int)));
+            expressionConfigurator.AddOrReplaceExpressionGeneratorForType(typeof(float), new NumberExpressionGenerator(typeof(float)));
+            expressionConfigurator.AddOrReplaceExpressionGeneratorForType(typeof(DateTime), new DataTimeExpressionGenerator());
+            expressionConfigurator.AddOrReplaceExpressionGeneratorForType(typeof(string), new StringExpressionGenerator());
             // Добовляем пользовательский формерователь выражения для типа SomeShape
-            expressionConfigurator.AddOrReplaceExpressionFormerForType(typeof(SomeShape), new CustomExpressionFormer());
+            expressionConfigurator.AddOrReplaceExpressionGeneratorForType(typeof(SomeShape), new CustomExpressionGenerator());
 
-
+            var availableConcatenationOperations = expressionConfigurator.GetAvailableConcatenationOperations();
             var filterFactory = new FilterFactory<SomeData>(expressionConfigurator);
             var filter = filterFactory.GetFilter();
             var filteredProperties = filterFactory.GetFilterProperties();
-            var availableConcatenationOperations = expressionConfigurator.GetAvailableConcatenationOperations();
 
             while (true)
             {

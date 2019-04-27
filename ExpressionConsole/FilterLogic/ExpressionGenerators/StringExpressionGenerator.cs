@@ -1,15 +1,15 @@
-﻿using FilterLogic.Heplers;
-using FilterLogic.Interfaces;
-using FilterLogic.Keys;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using FilterLogic.Heplers;
+using FilterLogic.Interfaces;
+using FilterLogic.Keys;
 
-namespace FilterLogic.ExpressionFormers
+namespace FilterLogic.ExpressionGenerators
 {
-    public class StringExpressionFormer : ExpressionFormerBase
+    public class StringExpressionGenerator : ExpressionGeneratorBase
     {
-        public StringExpressionFormer()
+        public StringExpressionGenerator()
         {
             _operations.Add(OperationKeys.BeginWithIgnoreCase, (left, right) => ContainsExpression(left, right, true, true) );
             _operations.Add(OperationKeys.BeginWithNotIgnoreCase, (left, right) => ContainsExpression(left, right, true, false));

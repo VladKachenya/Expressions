@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using ExpressionConsole.Model;
-using FilterLogic.ExpressionFormers;
+using FilterLogic.ExpressionGenerators;
 using FilterLogic.Heplers;
 using FilterLogic.Interfaces;
 
 namespace ExpressionConsole
 {
-    public class CustomExpressionFormer : ExpressionFormerBase
+    public class CustomExpressionGenerator : ExpressionGeneratorBase
     {
-        public CustomExpressionFormer()
+        public CustomExpressionGenerator()
         {
             var shapes = Enum.GetValues(typeof(Shapes)).Cast<Shapes>().ToList();
             foreach (var shapese in shapes)

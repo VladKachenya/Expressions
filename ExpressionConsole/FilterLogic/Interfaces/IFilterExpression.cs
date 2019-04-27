@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 
 namespace FilterLogic.Interfaces
 {
-    public interface IPredictionExpression
+    public interface IFilterExpression
     {
         ParameterExpression ParameterExpression { get; set; }
         BinaryExpression FinalExpression { get; set; }

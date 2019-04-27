@@ -3,17 +3,16 @@
     internal class OperationKeys
     {
         //for int
-        public const string LessKey = "Less";
-        public const string MoreKey = "More";
-        public const string EqualKey = "Equal";
+        public const string Less =nameof(Less);
+        public const string More = nameof(More);
+        public const string Equal = nameof(Equal);
         //for DateTime
-        public const string WorkdayKey = "Workday";
-        public const string HolidayKey = "Holiday";
+        public const string Workday = nameof(Workday);
+        public const string Holiday = nameof(Holiday);
         //for string
-        public const string BeginWithIgnoreCase = "Begin with (ignore case)";
-        public const string BeginWithNotIgnoreCase = "Begin with (not ignore case)";
-
-        public const string FinishesOnIgnoreCase = "Finishes on (ignore case)";
-        public const string FinishesOnNotIgnoreCase = "Finishes on (not ignore case)";
+        public const string BeginWithIgnoreCase = nameof(BeginWithIgnoreCase);
+        public const string BeginWithNotIgnoreCase = nameof(BeginWithNotIgnoreCase);
+        public const string FinishesOnIgnoreCase = nameof(FinishesOnIgnoreCase);
+        public const string FinishesOnNotIgnoreCase = nameof(FinishesOnNotIgnoreCase);
     }
 }

@@ -1,20 +1,18 @@
-﻿using FilterLogic.Helpers;
-using FilterLogic.Interfaces;
-using FilterLogic.Keys;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 using FilterLogic.Heplers;
+using FilterLogic.Interfaces;
+using FilterLogic.Keys;
 
-namespace FilterLogic.ExpressionFormers
+namespace FilterLogic.ExpressionGenerators
 {
-    public class DataTimeExpressionFormer : ExpressionFormerBase
+    public class DataTimeExpressionGenerator : ExpressionGeneratorBase
     {
-        public DataTimeExpressionFormer()
+        public DataTimeExpressionGenerator()
         {
-            _operations.Add(OperationKeys.WorkdayKey, (left, right) => Expression.IsFalse(HolidayExpression(left)));
-            _operations.Add(OperationKeys.HolidayKey, (left, right) => Expression.IsTrue(HolidayExpression(left)));
+            _operations.Add(OperationKeys.Workday, (left, right) => Expression.IsFalse(HolidayExpression(left)));
+            _operations.Add(OperationKeys.Holiday, (left, right) => Expression.IsTrue(HolidayExpression(left)));
         }
 
         public override List<IOperation> GetOperations()
