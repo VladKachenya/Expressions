@@ -5,7 +5,7 @@ using FilterLogic.Helpers;
 using FilterLogic.Heplers;
 using FilterLogic.Interfaces;
 
-namespace FilterLogic.Builders
+namespace FilterLogic
 {
     public class FilterFactory<T>
     {

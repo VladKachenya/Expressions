@@ -1,5 +1,5 @@
 ﻿using ExpressionConsole.Model;
-using FilterLogic.Builders;
+using FilterLogic;
 using FilterLogic.Entities;
 using FilterLogic.Heplers;
 using System;
